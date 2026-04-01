@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -56,8 +56,8 @@ const SkillCard = ({ skill, index }) => {
   });
 
   const cardRef = useRef(null);
-  const [isHovering, setIsHovering] = React.useState(false);
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -136,5 +136,4 @@ const HorizontalSkills = () => {
   );
 };
 
-const React = require('react');
 export default HorizontalSkills;
