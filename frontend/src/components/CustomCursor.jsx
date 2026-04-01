@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const CustomCursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
@@ -11,38 +11,22 @@ const CustomCursor = () => {
     };
 
     const handleMouseOver = (e) => {
-      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+      const target = e.target;
+      const isInteractive = target.closest('a, button, [role="button"], .project-card, .skill-card, input, textarea');
+      setIsHovering(!!isInteractive);
     };
 
     window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
-      window.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
 
   return (
     <>
-      <motion.div
-        className="custom-cursor"
-        animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 1.5 : 1,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
-        }}
-      />
       <motion.div
         className="custom-cursor-dot"
         animate={{
@@ -51,8 +35,24 @@ const CustomCursor = () => {
         }}
         transition={{
           type: 'spring',
-          stiffness: 800,
+          stiffness: 1000,
           damping: 35,
+          mass: 0.5,
+        }}
+      />
+      <motion.div
+        className="custom-cursor-ring"
+        animate={{
+          x: mousePosition.x - 20,
+          y: mousePosition.y - 20,
+          scale: isHovering ? 1.8 : 1,
+          opacity: isHovering ? 0.6 : 0.3,
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 500,
+          damping: 28,
+          mass: 0.5,
         }}
       />
     </>

@@ -1,29 +1,26 @@
-import "@/App.css";
-import CustomCursor from "./components/CustomCursor";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import '@/App.css';
+import CustomCursor from './components/CustomCursor';
+import Navigation from './components/Navigation';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ProjectsPage from './pages/ProjectsPage';
+import WritingPage from './pages/WritingPage';
 
 function App() {
   return (
-    <div className="App">
-      <CustomCursor />
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <CustomCursor />
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/writing" element={<WritingPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
