@@ -122,8 +122,8 @@ const PlatformCards = () => {
             <span className="platform-stat-label">Platforms</span>
           </div>
           <div className="platform-stat-item">
-            <span className="platform-stat-number"><CountUp end={3} /></span>
-            <span className="platform-stat-label">Countries</span>
+            <span className="platform-stat-number"><CountUp end={4} /></span>
+            <span className="platform-stat-label">Work Experiences</span>
           </div>
           <div className="platform-stat-item">
             <span className="platform-stat-number"><CountUp end={6} /></span>

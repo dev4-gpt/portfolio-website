@@ -71,10 +71,6 @@ const AboutSnapshot = () => {
             <span className="stat-number"><CountUp end={6} /></span>
             <span className="stat-label">Projects Shipped</span>
           </div>
-          <div className="stat-box">
-            <span className="stat-number"><CountUp end={3} /></span>
-            <span className="stat-label">Continents</span>
-          </div>
         </div>
       </motion.div>
     </section>

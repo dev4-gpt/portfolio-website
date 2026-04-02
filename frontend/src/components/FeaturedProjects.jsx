@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 const projects = [
   {
-    title: 'String Tune',
-    category: 'Creative Tech',
-    description: 'Immersive music discovery platform with 3D web experience and smooth scroll interactions',
-    image: 'https://images.pexels.com/photos/14240656/pexels-photo-14240656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    title: 'NemoClaw + Hostinger Integration',
+    category: 'Web Development',
+    description: 'Full-stack web application with custom domain integration and deployment pipeline',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
   },
   {
     title: 'AI Job Application Automation',

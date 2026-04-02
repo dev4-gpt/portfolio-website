@@ -1,6 +1,7 @@
 import ParallaxHero from '../components/ParallaxHero';
 import HorizontalSkills from '../components/HorizontalSkills';
 import AboutSnapshot from '../components/AboutSnapshot';
+import WorkExperience from '../components/WorkExperience';
 import FeaturedProjects from '../components/FeaturedProjects';
 import PlatformCards from '../components/PlatformCards';
 import FAQ from '../components/FAQ';
@@ -13,6 +14,7 @@ const HomePage = () => {
       <ParallaxHero />
       <HorizontalSkills />
       <AboutSnapshot />
+      <WorkExperience />
       <FeaturedProjects />
       <PlatformCards />
       <FAQ />
