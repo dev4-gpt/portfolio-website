@@ -27,7 +27,7 @@ const Skills = () => {
         <div className="skills-grid">
           {skills.map((skillSet, index) => (
             <motion.div
-              key={index}
+              key={skillSet.category}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
@@ -37,14 +37,14 @@ const Skills = () => {
             >
               <h3 className="skill-category">{skillSet.category}</h3>
               <div className="skill-items">
-                {skillSet.items.map((skill, i) => (
+                {skillSet.items.map((skill) => (
                   <motion.span
-                    key={i}
+                    key={skill}
                     className="skill-item"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.05 }}
+                    transition={{ delay: 0.3 }}
                     whileHover={{ scale: 1.1, backgroundColor: 'rgba(201, 169, 110, 0.2)' }}
                   >
                     {skill}

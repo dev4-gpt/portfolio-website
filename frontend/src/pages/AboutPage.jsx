@@ -107,7 +107,7 @@ const AboutPage = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', borderLeft: '2px solid #C9A96E', paddingLeft: '40px' }}>
             {timeline.map((item, index) => (
               <motion.div
-                key={index}
+                key={`${item.company}-${item.role}`}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -126,8 +126,8 @@ const AboutPage = () => {
                   </div>
                 </div>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '16px' }}>
-                  {item.achievements.map((achievement, i) => (
-                    <li key={i} style={{ paddingLeft: '20px', position: 'relative', color: 'rgba(240, 237, 232, 0.8)' }}>
+                  {item.achievements.map((achievement) => (
+                    <li key={achievement} style={{ paddingLeft: '20px', position: 'relative', color: 'rgba(240, 237, 232, 0.8)' }}>
                       <span style={{ position: 'absolute', left: '0', color: '#C9A96E', fontWeight: '700' }}>→</span>
                       {achievement}
                     </li>
@@ -153,7 +153,7 @@ const AboutPage = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px' }}>
             {techStack.map((tech, index) => (
               <motion.div
-                key={index}
+                key={tech}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -191,7 +191,7 @@ const AboutPage = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {process.map((step, index) => (
               <motion.div
-                key={index}
+                key={step.number}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}

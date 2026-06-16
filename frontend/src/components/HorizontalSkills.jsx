@@ -88,8 +88,8 @@ const SkillCard = ({ skill, index }) => {
       <div className="skill-number">{skill.number}</div>
       <h3 className="skill-title">{skill.title}</h3>
       <ul className="skill-list">
-        {skill.items.map((item, i) => (
-          <li key={i}>{item}</li>
+        {skill.items.map((item) => (
+          <li key={item}>{item}</li>
         ))}
       </ul>
     </motion.div>
@@ -128,7 +128,7 @@ const HorizontalSkills = () => {
       <motion.div className="skills-scroll-container" style={{ x }}>
         <div className="skills-track">
           {skills.map((skill, index) => (
-            <SkillCard key={index} skill={skill} index={index} />
+            <SkillCard key={skill.number} skill={skill} index={index} />
           ))}
         </div>
       </motion.div>

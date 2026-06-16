@@ -41,9 +41,9 @@ const Navigation = () => {
         </Link>
 
         <div className="nav-links">
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <Link
-              key={index}
+              key={item.path}
               to={item.path}
               className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
             >

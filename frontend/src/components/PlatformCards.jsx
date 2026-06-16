@@ -95,7 +95,7 @@ const PlatformCards = () => {
             const Icon = platform.icon;
             return (
               <motion.a
-                key={index}
+                key={platform.url}
                 href={platform.url}
                 target="_blank"
                 rel="noopener noreferrer"

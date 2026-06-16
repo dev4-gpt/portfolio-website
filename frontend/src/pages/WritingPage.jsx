@@ -92,7 +92,7 @@ const WritingPage = () => {
           <div className="writing-grid">
             {filteredWritings.map((writing, index) => (
               <motion.a
-                key={index}
+                key={writing.url}
                 href={writing.url}
                 target="_blank"
                 rel="noopener noreferrer"

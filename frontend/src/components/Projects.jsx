@@ -79,8 +79,8 @@ const ProjectCard = ({ project, index }) => {
           <p className="project-description">{project.description}</p>
           
           <div className="project-tags">
-            {project.tags.map((tag, i) => (
-              <span key={i} className="project-tag">{tag}</span>
+            {project.tags.map((tag) => (
+              <span key={tag} className="project-tag">{tag}</span>
             ))}
           </div>
           
@@ -121,7 +121,7 @@ const Projects = () => {
 
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>

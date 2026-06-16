@@ -38,7 +38,7 @@ const Header = () => {
         <nav className="nav">
           {navItems.map((item, index) => (
             <motion.a
-              key={index}
+              key={item.name}
               href={item.href}
               className="nav-link"
               initial={{ opacity: 0, y: -20 }}

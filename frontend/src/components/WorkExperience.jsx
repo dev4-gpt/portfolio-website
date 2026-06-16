@@ -70,7 +70,7 @@ const WorkExperience = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
           {experiences.map((exp, index) => (
             <motion.div
-              key={index}
+              key={`${exp.company}-${exp.role}`}
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-50px' }}
@@ -123,7 +123,7 @@ const WorkExperience = () => {
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {exp.achievements.map((achievement, i) => (
                     <motion.li
-                      key={i}
+                      key={achievement}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}

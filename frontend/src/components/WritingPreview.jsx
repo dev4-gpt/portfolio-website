@@ -43,7 +43,7 @@ const WritingPreview = () => {
         <div className="writing-grid">
           {writings.map((writing, index) => (
             <motion.a
-              key={index}
+              key={writing.url}
               href={writing.url}
               target="_blank"
               rel="noopener noreferrer"
