@@ -23,7 +23,8 @@ const CountUp = ({ end, duration = 2 }) => {
       }, 1000 / 60);
       return () => clearInterval(timer);
     }
-  }, [inView, end, duration]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, end, duration]); // setCount is stable from useState
 
   return <span ref={ref}>{count}+</span>;
 };

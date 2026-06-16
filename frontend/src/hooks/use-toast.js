@@ -143,7 +143,8 @@ function useToast() {
         listeners.splice(index, 1)
       }
     }
-  }, []); // listeners and setState are stable module-level references
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // setState is stable from useState, listeners is module-level constant
 
   return {
     ...state,

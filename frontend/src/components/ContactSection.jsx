@@ -120,11 +120,11 @@ const ContactSection = () => {
           </form>
 
           <div className="social-links-footer">
-            {socialLinks.map((link, index) => {
+            {socialLinks.map((link) => {
               const Icon = link.icon;
               return (
                 <a
-                  key={index}
+                  key={link.url}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"

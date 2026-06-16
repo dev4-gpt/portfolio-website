@@ -38,7 +38,7 @@ const Contact = () => {
               const Icon = link.icon;
               return (
                 <motion.a
-                  key={index}
+                  key={link.url}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"

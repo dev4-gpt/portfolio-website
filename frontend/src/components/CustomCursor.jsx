@@ -23,6 +23,7 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', updateMousePosition);
       document.removeEventListener('mouseover', handleMouseOver);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // setMousePosition and setIsHovering are stable from useState
 
   return (

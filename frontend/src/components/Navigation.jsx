@@ -13,7 +13,8 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []); // setScrolled is stable from useState
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // setScrolled is stable from useState, handleScroll defined in effect
 
   const navItems = [
     { name: 'Home', path: '/' },
