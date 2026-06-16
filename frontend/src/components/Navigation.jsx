@@ -13,7 +13,7 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, []); // setScrolled is stable from useState
 
   const navItems = [
     { name: 'Home', path: '/' },

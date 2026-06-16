@@ -53,10 +53,10 @@ const About = () => {
             className="about-content"
           >
             <p className="about-text">
-              I'm <span className="highlight">Aryaman Singh Dev</span> — an AI engineer and builder obsessed with making technology feel alive.
+              I&apos;m <span className="highlight">Aryaman Singh Dev</span> — an AI engineer and builder obsessed with making technology feel alive.
             </p>
             <p className="about-text">
-              From training adversarial models at NYU to shipping AI automation pipelines and immersive 3D web experiences, I live at the edge of what's technically possible and culturally resonant.
+              From training adversarial models at NYU to shipping AI automation pipelines and immersive 3D web experiences, I live at the edge of what&apos;s technically possible and culturally resonant.
             </p>
             <p className="about-text">
               Currently pursuing my MS in AI at Penn State — building things that matter, and writing about the ones that will.

@@ -86,7 +86,7 @@ const PlatformCards = () => {
         <div className="section-header">
           <h2 className="section-title">Where I Show Up</h2>
           <p className="section-subtitle">
-            From writing to building — here's where I share ideas and ship projects
+            From writing to building — here&apos;s where I share ideas and ship projects
           </p>
         </div>
 

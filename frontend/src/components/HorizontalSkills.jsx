@@ -121,7 +121,7 @@ const HorizontalSkills = () => {
       >
         <h2 className="section-title">what I can do</h2>
         <p className="section-subtitle">
-          From training models to building AI-native products — here's where I operate.
+          From training models to building AI-native products — here&apos;s where I operate.
         </p>
       </motion.div>
 

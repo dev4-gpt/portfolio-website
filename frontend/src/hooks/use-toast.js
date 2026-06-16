@@ -142,8 +142,8 @@ function useToast() {
       if (index > -1) {
         listeners.splice(index, 1)
       }
-    };
-  }, [state])
+    }
+  }, []); // listeners and setState are stable module-level references
 
   return {
     ...state,

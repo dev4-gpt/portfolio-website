@@ -133,7 +133,7 @@ const ProjectsPage = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: '32px' }}>
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={index}
+                key={project.title}
                 className="project-card"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -158,7 +158,7 @@ const ProjectsPage = () => {
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {project.links.map((link, i) => (
                           <a
-                            key={i}
+                            key={link.url}
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"

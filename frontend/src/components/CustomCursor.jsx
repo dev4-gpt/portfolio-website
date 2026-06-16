@@ -23,7 +23,7 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', updateMousePosition);
       document.removeEventListener('mouseover', handleMouseOver);
     };
-  }, []);
+  }, []); // setMousePosition and setIsHovering are stable from useState
 
   return (
     <>

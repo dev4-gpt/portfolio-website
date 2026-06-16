@@ -3,6 +3,8 @@ import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 import { ArrowRight, Linkedin, Instagram, FileText, Github } from 'lucide-react';
 
+const XIcon = () => <span style={{ fontSize: '20px', fontWeight: 'bold' }}>𝕏</span>;
+
 const ContactSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [formData, setFormData] = useState({
@@ -14,7 +16,7 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    // Form submission handled - integrate with your backend
   };
 
   const handleChange = (e) => {
@@ -23,7 +25,7 @@ const ContactSection = () => {
 
   const socialLinks = [
     { icon: Linkedin, url: 'https://www.linkedin.com/in/aryamandev/' },
-    { icon: () => <span style={{ fontSize: '20px', fontWeight: 'bold' }}>𝕏</span>, url: 'https://x.com/artamandev' },
+    { icon: XIcon, url: 'https://x.com/artamandev' },
     { icon: Instagram, url: 'https://www.instagram.com/aryamandev/' },
     { icon: FileText, url: 'https://substack.com/@aryamandev' },
     { icon: FileText, url: 'https://medium.com/@aryamandev.college' },
@@ -58,7 +60,7 @@ const ContactSection = () => {
         </div>
 
         <div className="contact-form">
-          <h2>Let's build something</h2>
+          <h2>Let&apos;s build something</h2>
           <p>Interested in collaboration, research opportunities, or just want to chat about AI and tech?</p>
 
           <form onSubmit={handleSubmit}>

@@ -82,7 +82,7 @@ const AboutPage = () => {
           <h1 className="section-title" style={{ fontSize: 'clamp(48px, 8vw, 80px)', marginBottom: '32px' }}>About me</h1>
           <div style={{ fontSize: '18px', lineHeight: '1.8', color: 'rgba(240, 237, 232, 0.8)', maxWidth: '800px' }}>
             <p style={{ marginBottom: '24px' }}>
-              I'm Aryaman Singh Dev — an AI engineer and builder obsessed with making technology feel alive. From training adversarial models at NYU to shipping AI automation pipelines and immersive 3D web experiences, I live at the edge of what's technically possible and culturally resonant.
+              I&apos;m Aryaman Singh Dev — an AI engineer and builder obsessed with making technology feel alive. From training adversarial models at NYU to shipping AI automation pipelines and immersive 3D web experiences, I live at the edge of what&apos;s technically possible and culturally resonant.
             </p>
             <p>
               Currently pursuing my MS in AI at Penn State — building things that matter, and writing about the ones that will. My work spans from deep research in AI safety to shipping production ML systems that solve real-world problems.
