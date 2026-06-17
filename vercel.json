@@ -31,7 +31,7 @@
     "env": {
       "REACT_APP_BACKEND_URL": "https://your-vercel-domain.vercel.app"
     }
-  }
+  },
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "cd frontend && npm install",
   "buildCommand": "cd frontend && npm run build",
