@@ -34,7 +34,11 @@ const ContactSection = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to deliver your message. Please try again.');
+        const body = await response.text();
+        console.error('Contact API error', response.status, body);
+        throw new Error(
+          body || 'Failed to deliver your message. Please try again.'
+        );
       }
 
       setStatus({
