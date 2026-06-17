@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
-import { ArrowRight, Linkedin, Instagram, FileText, Github } from 'lucide-react';
+import { ArrowRight, Linkedin, Instagram, FileText, Github, Loader2 } from 'lucide-react';
 
 const XIcon = () => <span style={{ fontSize: '20px', fontWeight: 'bold' }}>𝕏</span>;
 
@@ -14,9 +14,49 @@ const ContactSection = () => {
     message: '',
   });
 
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState({
+    loading: false,
+    success: null,
+    error: null,
+  });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission handled - integrate with your backend
+    setStatus({ loading: true, success: null, error: null });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to deliver your message. Please try again.');
+      }
+
+      setStatus({
+        loading: false,
+        success: 'Message sent successfully! Talk to you soon.',
+        error: null,
+      });
+
+      // Clear the form fields on success
+      setFormData({
+        name: '',
+        email: '',
+        project: '',
+        message: '',
+      });
+    } catch (err) {
+      setStatus({
+        loading: false,
+        success: null,
+        error: err.message || 'Something went wrong. Please check your connection.',
+      });
+    }
   };
 
   const handleChange = (e) => {
@@ -74,6 +114,7 @@ const ContactSection = () => {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
+                disabled={status.loading}
               />
             </div>
 
@@ -87,6 +128,7 @@ const ContactSection = () => {
                 onChange={handleChange}
                 placeholder="your@email.com"
                 required
+                disabled={status.loading}
               />
             </div>
 
@@ -99,6 +141,7 @@ const ContactSection = () => {
                 value={formData.project}
                 onChange={handleChange}
                 placeholder="Your project or idea"
+                disabled={status.loading}
               />
             </div>
 
@@ -111,11 +154,32 @@ const ContactSection = () => {
                 onChange={handleChange}
                 placeholder="Tell me more..."
                 required
+                disabled={status.loading}
               />
             </div>
 
-            <button type="submit" className="submit-btn">
-              Send it <ArrowRight size={16} />
+            {status.success && (
+              <div style={{ color: '#4ade80', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                {status.success}
+              </div>
+            )}
+
+            {status.error && (
+              <div style={{ color: '#f87171', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                {status.error}
+              </div>
+            )}
+
+            <button type="submit" className="submit-btn" disabled={status.loading}>
+              {status.loading ? (
+                <>
+                  Sending... <Loader2 size={16} className="animate-spin" />
+                </>
+              ) : (
+                <>
+                  Send it <ArrowRight size={16} />
+                </>
+              )}
             </button>
           </form>
 
