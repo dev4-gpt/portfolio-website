@@ -67,7 +67,7 @@ const Experience = () => {
         <div className="experience-timeline">
           {experiences.map((exp, index) => (
             <motion.div
-              key={index}
+              key={exp.company}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-50px' }}
@@ -97,7 +97,7 @@ const Experience = () => {
                 <ul className="experience-achievements">
                   {exp.achievements.map((achievement, i) => (
                     <motion.li
-                      key={i}
+                      key={achievement}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}

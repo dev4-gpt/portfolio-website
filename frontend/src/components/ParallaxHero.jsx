@@ -87,7 +87,7 @@ const ParallaxHero = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          I'm a Penn State MS AI student building at the intersection of deep tech, generative AI, and digital culture
+          I&apos;m a Penn State MS AI student building at the intersection of deep tech, generative AI, and digital culture
         </motion.p>
       </div>
     </section>

@@ -22,7 +22,8 @@ const CountUp = ({ end, duration = 2 }) => {
       }, 1000 / 60);
       return () => clearInterval(timer);
     }
-  }, [inView, end, duration]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, end, duration]); // setCount is stable from useState
 
   return <span ref={ref}>{count}+</span>;
 };
@@ -86,7 +87,7 @@ const PlatformCards = () => {
         <div className="section-header">
           <h2 className="section-title">Where I Show Up</h2>
           <p className="section-subtitle">
-            From writing to building — here's where I share ideas and ship projects
+            From writing to building — here&apos;s where I share ideas and ship projects
           </p>
         </div>
 
@@ -95,7 +96,7 @@ const PlatformCards = () => {
             const Icon = platform.icon;
             return (
               <motion.a
-                key={index}
+                key={platform.url}
                 href={platform.url}
                 target="_blank"
                 rel="noopener noreferrer"

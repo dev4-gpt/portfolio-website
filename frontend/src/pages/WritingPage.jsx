@@ -4,6 +4,42 @@ import { useState } from 'react';
 
 const writings = [
   {
+    title: 'Democratizing Alpha: Why Parallel Multi-Agent Systems are the Future of Open-Source Finance',
+    platform: 'Substack',
+    date: 'May 2026',
+    excerpt: 'Why combining LangGraph&apos;s fan-out architecture with Groq&apos;s Llama-3.3 is rendering sequential AI chains obsolete. Building MarketMind with parallel agent orchestration.',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3',
+    url: 'https://open.substack.com/pub/aryamandev/p/democratizing-alpha-why-parallel?r=q7npe&utm_campaign=post-expanded-share&utm_medium=post%20viewer',
+    category: 'AI',
+  },
+  {
+    title: 'Building a Real-Time Multi-Agent Financial Analyst with LangGraph and Llama 3',
+    platform: 'Medium',
+    date: 'May 2026',
+    excerpt: 'From monolithic prompts to multi-agent microservices. How parallel execution and fan-out/fan-in patterns enable institutional-grade analysis in under 5 seconds.',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3',
+    url: 'https://medium.com/@aryamandev.college/building-a-real-time-multi-agent-financial-analyst-with-langgraph-and-llama-3-92591f7525ca',
+    category: 'AI',
+  },
+  {
+    title: 'How I Built an AI-Powered Job Application Machine and Saved 30 Hours Per Week',
+    platform: 'Medium',
+    date: 'Apr 2026',
+    excerpt: 'End-to-end n8n automation pipeline that screens 847 jobs, filters 72% automatically, and generates tailored applications. From data ingestion to smart deduplication.',
+    image: 'https://images.unsplash.com/photo-1770486036751-e55247238964',
+    url: 'https://medium.com/@aryamandev.college/how-i-built-an-ai-powered-job-application-machine-and-saved-30-hours-per-week-1db7021e56c2',
+    category: 'Product',
+  },
+  {
+    title: 'Applying Statistical NLP Concepts to Video-Based Threat Detection',
+    platform: 'Medium',
+    date: 'Apr 2026',
+    excerpt: 'Treating video frames as word sequences. How Conv-LSTM and Bi-LSTM architectures enable temporal modeling for real-time threat detection through sequence modeling.',
+    image: 'https://images.unsplash.com/photo-1678845530864-18a666ca9762',
+    url: 'https://medium.com/@aryamandev.college/applying-statistical-nlp-concepts-to-video-based-threat-detection-6e51f655b3af',
+    category: 'Research',
+  },
+  {
     title: 'The Future of AI Safety: Proxy-Based Architectures',
     platform: 'Substack',
     date: 'Apr 2025',
@@ -92,7 +128,7 @@ const WritingPage = () => {
           <div className="writing-grid">
             {filteredWritings.map((writing, index) => (
               <motion.a
-                key={index}
+                key={writing.url}
                 href={writing.url}
                 target="_blank"
                 rel="noopener noreferrer"

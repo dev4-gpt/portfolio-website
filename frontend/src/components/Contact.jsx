@@ -20,11 +20,11 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="contact-content"
         >
-          <span className="section-label">Let's Connect</span>
+          <span className="section-label">Let&apos;s Connect</span>
           <h2 className="contact-title">Get In Touch</h2>
           <p className="contact-description">
             Interested in collaboration, research opportunities, or just want to chat about AI and tech? 
-            <br />Let's build something extraordinary together.
+            <br />Let&apos;s build something extraordinary together.
           </p>
 
           <motion.div
@@ -38,7 +38,7 @@ const Contact = () => {
               const Icon = link.icon;
               return (
                 <motion.a
-                  key={index}
+                  key={link.url}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"

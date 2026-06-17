@@ -23,7 +23,8 @@ const CountUp = ({ end, duration = 2 }) => {
       }, 1000 / 60);
       return () => clearInterval(timer);
     }
-  }, [inView, end, duration]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, end, duration]); // setCount is stable from useState
 
   return <span ref={ref}>{count}+</span>;
 };
@@ -43,7 +44,7 @@ const AboutSnapshot = () => {
         <div className="about-left">
           <h2>About me</h2>
           <p className="about-bio">
-            I'm Aryaman Singh Dev — an AI engineer and builder obsessed with making technology feel alive. From training adversarial models at NYU to shipping AI automation pipelines and immersive 3D web experiences, I live at the edge of what's technically possible and culturally resonant. Currently pursuing my MS in AI at Penn State — building things that matter, and writing about the ones that will.
+            I&apos;m Aryaman Singh Dev — an AI engineer and builder obsessed with making technology feel alive. From training adversarial models at NYU to shipping AI automation pipelines and immersive 3D web experiences, I live at the edge of what&apos;s technically possible and culturally resonant. Currently pursuing my MS in AI at Penn State — building things that matter, and writing about the ones that will.
           </p>
           
           <div className="about-contact">

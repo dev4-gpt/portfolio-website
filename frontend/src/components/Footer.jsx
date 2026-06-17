@@ -14,7 +14,7 @@ const Footer = () => {
             className="footer-text"
           >
             <p className="footer-quote">
-              "At the intersection of deep tech, generative AI, and digital culture"
+              &ldquo;At the intersection of deep tech, generative AI, and digital culture&rdquo;
             </p>
             <p className="footer-copyright">
               © {new Date().getFullYear()} Aryaman Singh Dev. All rights reserved.

@@ -5,20 +5,20 @@ import { Link } from 'react-router-dom';
 
 const writings = [
   {
-    title: 'The Future of AI Safety: Proxy-Based Architectures',
+    title: 'Democratizing Alpha: Why Parallel Multi-Agent Systems are the Future of Open-Source Finance',
     platform: 'Substack',
-    date: 'Apr 2025',
-    excerpt: 'Exploring how proxy-based systems can help us build safer AI by separating objectives from execution...',
-    image: 'https://images.unsplash.com/photo-1678845530864-18a666ca9762',
-    url: 'https://substack.com/@aryamandev',
+    date: 'May 2026',
+    excerpt: 'Why combining LangGraph&apos;s fan-out architecture with Groq&apos;s Llama-3.3 is rendering sequential AI chains obsolete...',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3',
+    url: 'https://open.substack.com/pub/aryamandev/p/democratizing-alpha-why-parallel?r=q7npe&utm_campaign=post-expanded-share&utm_medium=post%20viewer',
   },
   {
-    title: 'Building AI Automation Pipelines: n8n + Claude',
+    title: 'How I Built an AI-Powered Job Application Machine and Saved 30 Hours Per Week',
     platform: 'Medium',
-    date: 'Mar 2025',
-    excerpt: 'A technical deep dive into creating end-to-end automation workflows that cut manual work by 60%...',
+    date: 'Apr 2026',
+    excerpt: 'End-to-end n8n automation pipeline that screens 847 jobs and filters 72% automatically...',
     image: 'https://images.unsplash.com/photo-1770486036751-e55247238964',
-    url: 'https://medium.com/@aryamandev.college',
+    url: 'https://medium.com/@aryamandev.college/how-i-built-an-ai-powered-job-application-machine-and-saved-30-hours-per-week-1db7021e56c2',
   },
 ];
 
@@ -43,7 +43,7 @@ const WritingPreview = () => {
         <div className="writing-grid">
           {writings.map((writing, index) => (
             <motion.a
-              key={index}
+              key={writing.url}
               href={writing.url}
               target="_blank"
               rel="noopener noreferrer"
