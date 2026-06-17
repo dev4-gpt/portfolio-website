@@ -5,8 +5,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Dict, Any
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
+from typing import List, Dict, Any, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -37,10 +37,41 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class ContactMessage(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: EmailStr
+    project: Optional[str] = None
+    message: str
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ContactMessageCreate(BaseModel):
+    name: str
+    email: EmailStr
+    project: Optional[str] = None
+    message: str
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root() -> Dict[str, str]:
     return {"message": "Hello World"}
+
+@api_router.post("/contact", response_model=ContactMessage)
+async def create_contact_message(input: ContactMessageCreate) -> ContactMessage:
+    contact_dict = input.model_dump()
+    contact_obj = ContactMessage(**contact_dict)
+    
+    logger.info("Received contact message: %s", contact_dict)
+
+    # Convert to dict and serialize datetime to ISO string for MongoDB
+    doc = contact_obj.model_dump()
+    doc['timestamp'] = doc['timestamp'].isoformat()
+    
+    result = await db.contact_messages.insert_one(doc)
+    logger.info("Inserted contact message with id %s", result.inserted_id)
+    return contact_obj
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate) -> StatusCheck:
