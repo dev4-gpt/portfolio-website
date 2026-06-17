@@ -34,10 +34,15 @@ const ContactSection = () => {
       });
 
       if (!response.ok) {
-        const body = await response.text();
-        console.error('Contact API error', response.status, body);
+        let body = '';
+        try {
+          body = await response.clone().text();
+        } catch (err) {
+          console.warn('Failed to read error body', err);
+        }
+        console.error('Contact API error', response.status, response.statusText, body);
         throw new Error(
-          body || 'Failed to deliver your message. Please try again.'
+          body || response.statusText || 'Failed to deliver your message. Please try again.'
         );
       }
 
