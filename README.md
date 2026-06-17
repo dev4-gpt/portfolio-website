@@ -197,3 +197,12 @@ Built with intention. © 2025 Aryaman Singh Dev
 
 **Built by Aryaman Singh Dev**
 Portfolio Website | One-Click Vercel Deployment Ready
+# My portfolio website 
+
+Built with Emergent
+
+Deployed with Vercel @ **(https://portfolio-website-sage-eight-13.vercel.app/)**
+
+
+If the one above doesn't work, use this:
+https://portfolio-website-21t9iex01-portfolio-47704487.vercel.app/
