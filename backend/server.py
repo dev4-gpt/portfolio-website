@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -14,10 +14,26 @@ from datetime import datetime, timezone
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
+# Configure logging early
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+mongo_url = os.environ.get('MONGO_URL')
+db_name = os.environ.get('DB_NAME')
+client: Optional[AsyncIOMotorClient] = None
+db = None
+
+if mongo_url and db_name:
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
+else:
+    logger.warning(
+        'Missing MONGO_URL or DB_NAME environment variables. Contact API will not be available.'
+    )
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -60,6 +76,13 @@ async def root() -> Dict[str, str]:
 
 @api_router.post("/contact", response_model=ContactMessage)
 async def create_contact_message(input: ContactMessageCreate) -> ContactMessage:
+    if db is None:
+        logger.error('Database not initialized; cannot save contact message.')
+        raise HTTPException(
+            status_code=500,
+            detail='Database connection unavailable. Please try again later.',
+        )
+
     contact_dict = input.model_dump()
     contact_obj = ContactMessage(**contact_dict)
     
@@ -69,8 +92,16 @@ async def create_contact_message(input: ContactMessageCreate) -> ContactMessage:
     doc = contact_obj.model_dump()
     doc['timestamp'] = doc['timestamp'].isoformat()
     
-    result = await db.contact_messages.insert_one(doc)
-    logger.info("Inserted contact message with id %s", result.inserted_id)
+    try:
+        result = await db.contact_messages.insert_one(doc)
+        logger.info("Inserted contact message with id %s", result.inserted_id)
+    except Exception as exc:
+        logger.exception('Failed to insert contact message: %s', exc)
+        raise HTTPException(
+            status_code=500,
+            detail='Unable to save message at this time. Please try again later.',
+        )
+
     return contact_obj
 
 @api_router.post("/status", response_model=StatusCheck)

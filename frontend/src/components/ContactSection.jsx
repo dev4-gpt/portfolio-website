@@ -36,7 +36,7 @@ const ContactSection = () => {
       if (!response.ok) {
         let body = '';
         try {
-          body = await response.clone().text();
+          body = await response.text();
         } catch (err) {
           console.warn('Failed to read error body', err);
         }
