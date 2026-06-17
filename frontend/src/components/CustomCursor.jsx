@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
 
+  const updateMousePosition = useCallback((e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  }, []);
+
+  const handleMouseOver = useCallback((e) => {
+    const target = e.target;
+    const isInteractive = target.closest('a, button, [role="button"], .project-card, .skill-card, input, textarea');
+    setIsHovering(!!isInteractive);
+  }, []);
+
   useEffect(() => {
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseOver = (e) => {
-      const target = e.target;
-      const isInteractive = target.closest('a, button, [role="button"], .project-card, .skill-card, input, textarea');
-      setIsHovering(!!isInteractive);
-    };
-
     window.addEventListener('mousemove', updateMousePosition);
     document.addEventListener('mouseover', handleMouseOver);
 
@@ -23,8 +23,7 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', updateMousePosition);
       document.removeEventListener('mouseover', handleMouseOver);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // setMousePosition and setIsHovering are stable from useState
+  }, [updateMousePosition, handleMouseOver]);
 
   return (
     <>
