@@ -74,6 +74,10 @@ class ContactMessageCreate(BaseModel):
 async def root() -> Dict[str, str]:
     return {"message": "Hello World"}
 
+@api_router.get("/health")
+async def health_check() -> Dict[str, str]:
+    return {"status": "ok", "service": "contact-api"}
+
 @api_router.post("/contact", response_model=ContactMessage)
 async def create_contact_message(input: ContactMessageCreate) -> ContactMessage:
     if db is None:
@@ -139,13 +143,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
 @app.on_event("shutdown")
 async def shutdown_db_client() -> None:
-    client.close()
+    if client is not None:
+        client.close()

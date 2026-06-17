@@ -13,7 +13,6 @@ env/
 venv/
 .pytest_cache/
 .mypy_cache/
-backend
 memory
 test_reports
 tests

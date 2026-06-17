@@ -88,3 +88,4 @@ android-sdk/-e
 credentials.json
 *.key
 .credentials
+.env*
