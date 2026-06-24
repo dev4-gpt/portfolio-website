@@ -7,7 +7,7 @@ const writings = [
     title: 'Democratizing Alpha: Why Parallel Multi-Agent Systems are the Future of Open-Source Finance',
     platform: 'Substack',
     date: 'May 2026',
-    excerpt: 'Why combining LangGraph&apos;s fan-out architecture with Groq&apos;s Llama-3.3 is rendering sequential AI chains obsolete. Building MarketMind with parallel agent orchestration.',
+    excerpt: 'Why combining LangGraph\'s fan-out architecture with Groq\'s Llama-3.3 is rendering sequential AI chains obsolete. Building MarketMind with parallel agent orchestration.',
     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3',
     url: 'https://open.substack.com/pub/aryamandev/p/democratizing-alpha-why-parallel?r=q7npe&utm_campaign=post-expanded-share&utm_medium=post%20viewer',
     category: 'AI',
