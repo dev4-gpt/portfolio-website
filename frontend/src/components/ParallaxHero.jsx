@@ -60,7 +60,7 @@ const ParallaxHero = () => {
           transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
         >
           <img 
-            src="https://customer-assets.emergentagent.com/job_interactive-aryaman/artifacts/b17mu9hm_linkedin_pic.jpeg" 
+            src="/profile-photo.jpg" 
             alt="Aryaman Singh Dev"
             style={{
               width: '100px',

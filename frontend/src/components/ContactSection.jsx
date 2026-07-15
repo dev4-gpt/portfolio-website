@@ -62,7 +62,7 @@ const ContactSection = () => {
         <div className="contact-form">
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '32px' }}>
             <img 
-              src="https://customer-assets.emergentagent.com/job_interactive-aryaman/artifacts/b17mu9hm_linkedin_pic.jpeg" 
+              src="/profile-photo.jpg" 
               alt="Aryaman Singh Dev"
               style={{
                 width: '80px',
