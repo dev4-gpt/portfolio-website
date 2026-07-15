@@ -155,7 +155,14 @@ const ProjectsPage = () => {
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: '32px', position: 'relative', zIndex: 1 }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', 
+            gap: '40px', 
+            position: 'relative', 
+            zIndex: 1,
+            alignItems: 'start',
+          }}>
             {filteredProjects.map((project, index) => (
               <ProjectCard 
                 key={project.title}

@@ -60,8 +60,23 @@ const ContactSection = () => {
         </div>
 
         <div className="contact-form">
-          <h2>Let&apos;s build something</h2>
-          <p>Interested in collaboration, research opportunities, or just want to chat about AI and tech?</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '32px' }}>
+            <img 
+              src="https://customer-assets.emergentagent.com/job_interactive-aryaman/artifacts/b17mu9hm_linkedin_pic.jpeg" 
+              alt="Aryaman Singh Dev"
+              style={{
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '3px solid #C9A96E',
+              }}
+            />
+            <div>
+              <h2 style={{ margin: 0 }}>Let&apos;s build something</h2>
+              <p style={{ margin: '8px 0 0 0', opacity: 0.8 }}>Interested in collaboration, research opportunities, or just want to chat about AI and tech?</p>
+            </div>
+          </div>
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">

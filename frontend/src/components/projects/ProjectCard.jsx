@@ -41,21 +41,37 @@ const ProjectCard = ({ project, index, parallaxY }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
       style={{ 
-        height: '450px', 
+        minHeight: '500px',
+        height: 'auto',
         cursor: (project.link || project.links) ? 'pointer' : 'default',
         y: parallaxY,
+        display: 'flex',
+        flexDirection: 'column',
       }}
       onClick={handleClick}
     >
-      <div className="project-image">
+      <div className="project-image" style={{ flexShrink: 0 }}>
         <img src={project.image} alt={project.title} />
       </div>
       <div className="project-overlay" />
       <div className="project-category">{project.category}</div>
-      <div className="project-content">
-        <h3 className="project-title">{project.title}</h3>
-        <p className="project-description">{project.description}</p>
-        <div style={{ marginTop: '16px', opacity: 0, transform: 'translateY(20px)', transition: 'all 0.4s ease' }} className="project-description">
+      <div className="project-content" style={{ 
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: '24px',
+      }}>
+        <div>
+          <h3 className="project-title" style={{ marginBottom: '12px' }}>{project.title}</h3>
+          <p className="project-description" style={{ 
+            lineHeight: '1.6',
+            marginBottom: '16px',
+            overflow: 'visible',
+            whiteSpace: 'normal',
+          }}>{project.description}</p>
+        </div>
+        <div style={{ marginTop: 'auto', paddingTop: '16px' }}>
           {renderLinks()}
         </div>
       </div>
