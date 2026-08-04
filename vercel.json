@@ -1,11 +1,12 @@
 {
   "version": 2,
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend/build"
+        "distDir": "build"
       }
     },
     {
@@ -13,6 +14,7 @@
       "use": "@vercel/python"
     }
   ],
+  "outputDirectory": "build",
   "routes": [
     {
       "src": "/api/(.*)",
@@ -22,14 +24,5 @@
       "src": "/(.*)",
       "dest": "/frontend/$1"
     }
-  ],
-  "env": {
-    "MONGO_URL": "@mongo_url",
-    "DB_NAME": "portfolio_db"
-  },
-  "build": {
-    "env": {
-      "REACT_APP_BACKEND_URL": "https://your-vercel-domain.vercel.app"
-    }
-  }
+  ]
 }
