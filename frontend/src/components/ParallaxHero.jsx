@@ -54,12 +54,31 @@ const ParallaxHero = () => {
       {/* Hero text content */}
       <div className="hero-content">
         <motion.div
-          className="hero-label"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '24px' }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
         >
-          Aryaman Singh Dev
+          <img 
+            src="/profile-photo.jpg" 
+            alt="Aryaman Singh Dev"
+            style={{
+              width: '100px',
+              height: '100px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              border: '3px solid #C9A96E',
+              boxShadow: '0 10px 40px rgba(201, 169, 110, 0.3)',
+            }}
+          />
+          <motion.div
+            className="hero-label"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Aryaman Singh Dev
+          </motion.div>
         </motion.div>
 
         <div className="hero-title-stack">

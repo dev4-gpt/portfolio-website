@@ -5,11 +5,49 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
+from typing import Dict
 from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from typing import List, Dict, Any, Optional
 import uuid
 from datetime import datetime, timezone
 
+
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
+# Configure logging early
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# MongoDB connection
+mongo_url = os.environ.get('MONGO_URL')
+db_name = os.environ.get('DB_NAME')
+client: Optional[AsyncIOMotorClient] = None
+db = None
+
+if mongo_url and db_name:
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
+else:
+    logger.warning(
+        'Missing MONGO_URL or DB_NAME environment variables. Contact API will not be available.'
+    )
+
+# Create the main app without a prefix
+app = FastAPI()
+
+# Create a router with the /api prefix
+api_router = APIRouter(prefix="/api")
+
+from pathlib import Path
+from typing import List, Dict, Any, Optional
+import uuid
+from datetime import datetime, timezone
+
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -72,7 +110,7 @@ class ContactMessageCreate(BaseModel):
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root() -> Dict[str, str]:
-    return {"message": "Hello World"}
+    return {"message": "Portfolio API - Aryaman Singh Dev"}
 
 @api_router.get("/health")
 async def health_check() -> Dict[str, str]:
@@ -135,12 +173,20 @@ async def get_status_checks() -> List[StatusCheck]:
 # Include the router in the main app
 app.include_router(api_router)
 
+# CORS Configuration - Security: Explicit allowlist instead of wildcard
+cors_origins = os.environ.get('CORS_ORIGINS', '').split(',')
+# Filter out empty strings and wildcards for security
+cors_origins = [origin.strip() for origin in cors_origins if origin.strip() and origin.strip() != '*']
+
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_credentials=False,  # Disabled since no authentication is used
+    allow_origins=cors_origins if cors_origins else [
+        "https://portfolio-website-sage-eight-13.vercel.app",  # Production domain
+        "http://localhost:3000"  # Local development
+    ],
+    allow_methods=["GET", "OPTIONS"],  # Only allow read operations
+    allow_headers=["Content-Type"],
 )
 
 @app.on_event("shutdown")

@@ -33,7 +33,7 @@ const Navigation = () => {
       <div className="nav-container">
         <Link to="/" className="nav-logo">
           <img 
-            src="https://customer-assets.emergentagent.com/job_interactive-aryaman/artifacts/qoejdt71_linkedin_pic.jpeg" 
+            src="/profile-photo.jpg" 
             alt="Aryaman Singh Dev"
             className="nav-avatar"
           />
